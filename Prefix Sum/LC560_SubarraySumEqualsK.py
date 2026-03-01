@@ -24,20 +24,35 @@ Space Complexity: O(n)
 class Solution:
     def subarraySum(self, nums: List[int], k: int) -> int:
         
-        prefix = [0] * (len(nums) + 1)
-        freq = {0: 1}
-        count = 0
+        # prefix = [0] * (len(nums) + 1)
+        # freq = {0: 1}
+        # count = 0
 
-        for i in range(len(nums)):
-            prefix[i + 1] = prefix[i] + nums[i]
+        # for i in range(len(nums)):
+        #     prefix[i + 1] = prefix[i] + nums[i]
         
-            a = prefix[i + 1] - k
-            if a in freq:
-                count += freq[a]
+        #     a = prefix[i + 1] - k
+        #     if a in freq:
+        #         count += freq[a]
 
-            if prefix[i + 1] not in freq:
-                freq[prefix[i + 1]] = 1
+        #     if prefix[i + 1] not in freq:
+        #         freq[prefix[i + 1]] = 1
+        #     else:
+        #         freq[prefix[i + 1]] += 1
+
+        # return count
+
+        prefix = 0
+        freq = {0:1}
+        count = 0
+        for i in range(len(nums)):
+            prefix += nums[i]
+            if prefix-k in freq:
+                count += freq[prefix-k]
+   
+            if prefix not in freq:
+                freq[prefix] = 1
             else:
-                freq[prefix[i + 1]] += 1
-
+                freq[prefix] += 1
+          
         return count
