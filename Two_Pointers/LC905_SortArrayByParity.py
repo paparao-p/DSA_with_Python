@@ -26,8 +26,6 @@ Time Complexity: O(n)
 Space Complexity: O(1)
 """
 
-from typing import List
-
 
 class Solution:
     def sortArrayByParity(self, nums: List[int]) -> List[int]:
